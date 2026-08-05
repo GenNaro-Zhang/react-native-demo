@@ -1,3 +1,8 @@
+/**
+ * Babel 配置工厂。api 为 Babel 提供的配置上下文（@types/babel__core 的 ConfigAPI），
+ * 通过 api.env('test') 区分 Jest / 运行环境，条件加载 nativewind/babel。
+ * @param {import('@babel/core').ConfigAPI} api
+ */
 module.exports = api => {
   // Jest 环境下禁用 nativewind/babel：它会改写 JSX pragma 并注入运行时代码，
   // 而 Jest 转译 node_modules 中 ESM 包（如 @react-navigation）时无法执行该检查，
@@ -9,5 +14,9 @@ module.exports = api => {
       'module:@react-native/babel-preset',
       ...(isTest ? [] : ['nativewind/babel']),
     ],
+    // Reanimated 4.x 基于 worklets 重构，必须在 plugins 末尾声明该插件，
+    // 否则 react-native-keyboard-controller 等依赖 Reanimated 的库会报
+    // "Reanimated plugin not found"。
+    plugins: ['react-native-worklets/plugin'],
   };
 };

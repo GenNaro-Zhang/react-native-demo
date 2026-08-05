@@ -24,7 +24,14 @@ export function ChatListScreen() {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>聊天</Text>
+      <Pressable
+        style={styles.title}
+        onPress={() => navigation.navigate('KeyboardTest')}
+        hitSlop={8}
+      >
+        <Text style={styles.titleText}>聊天</Text>
+        <Text style={styles.titleHint}>（点我测试键盘）</Text>
+      </Pressable>
 
       <FlatList
         data={CHATS}
@@ -61,11 +68,14 @@ export function ChatListScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#fff', paddingTop: 12 },
   title: {
-    fontSize: 22,
-    fontWeight: '700',
+    flexDirection: 'row',
+    alignItems: 'baseline',
+    gap: 8,
     paddingHorizontal: 16,
     marginBottom: 8,
   },
+  titleText: { fontSize: 22, fontWeight: '700' },
+  titleHint: { fontSize: 12, color: '#9CA3AF', fontWeight: '400' },
   row: {
     flexDirection: 'row',
     alignItems: 'center',

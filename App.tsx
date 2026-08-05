@@ -3,6 +3,7 @@ import {
   NavigationContainer,
   useNavigationContainerRef,
 } from '@react-navigation/native';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { useMMKVDevTools } from '@rozenite/mmkv-plugin';
 import { useReactNavigationDevTools } from '@rozenite/react-navigation-plugin';
@@ -38,9 +39,13 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
-        <NavigationContainer ref={navigationRef}>
-          <RootStack />
-        </NavigationContainer>
+        {/* KeyboardProvider 是 react-native-keyboard-controller 的必需根组件，
+            负责键盘状态管理；preload 默认预加载键盘避免首次弹出延迟 */}
+        <KeyboardProvider>
+          <NavigationContainer ref={navigationRef}>
+            <RootStack />
+          </NavigationContainer>
+        </KeyboardProvider>
       </SafeAreaView>
     </SafeAreaProvider>
   );

@@ -11,4 +11,6 @@ export type RootStackParamList = {
     /** 从推送通知 / 搜索结果深链跳转时，定位到某条历史消息 */
     jumpToMessageId?: string;
   };
+  /** 键盘测试页 */
+  KeyboardTest: undefined;
 };

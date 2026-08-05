@@ -1,4 +1,17 @@
-pluginManagement { includeBuild("../node_modules/@react-native/gradle-plugin") }
+pluginManagement {
+  includeBuild("../node_modules/@react-native/gradle-plugin")
+
+  // react-native-reanimated 的 build.gradle.kts 硬编码声明了 com.diffplug.spotless 插件，
+  // 默认的 Gradle Central Plugin Repository 在当前网络环境无法解析。
+  // 显式配置镜像仓库以保证插件可下载。
+  repositories {
+    maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+    maven { url = uri("https://maven.aliyun.com/repository/public") }
+    gradlePluginPortal()
+    google()
+    mavenCentral()
+  }
+}
 plugins { id("com.facebook.react.settings") }
 extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autolinkLibrariesFromCommand() }
 rootProject.name = 'ReactDemo'
