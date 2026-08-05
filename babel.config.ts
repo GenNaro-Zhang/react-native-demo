@@ -1,9 +1,10 @@
+import type { ConfigAPI, TransformOptions } from '@babel/core';
+
 /**
- * Babel 配置工厂。api 为 Babel 提供的配置上下文（@types/babel__core 的 ConfigAPI），
- * 通过 api.env('test') 区分 Jest / 运行环境，条件加载 nativewind/babel。
- * @param {import('@babel/core').ConfigAPI} api
+ * Babel 配置工厂。api 为 Babel 提供的配置上下文。
+ * @param api Babel 配置上下文
  */
-module.exports = api => {
+const babelConfig = (api: ConfigAPI): TransformOptions => {
   // Jest 环境下禁用 nativewind/babel：它会改写 JSX pragma 并注入运行时代码，
   // 而 Jest 转译 node_modules 中 ESM 包（如 @react-navigation）时无法执行该检查，
   // 会报 Unexpected token '<'。测试不需要样式编译，用 RN 默认 preset 即可。
@@ -20,3 +21,5 @@ module.exports = api => {
     plugins: ['react-native-worklets/plugin'],
   };
 };
+
+export default babelConfig;
