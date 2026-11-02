@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { LegendListRef } from '@legendapp/list';
+import type { LegendListRef } from '@legendapp/list/react-native';
 import { Message } from '../types/chat';
 import { getMessages, paginateMessages } from '../services/chatService';
 

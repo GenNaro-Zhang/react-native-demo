@@ -9,7 +9,7 @@ import {
 import { useNavigation, useRoute } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RouteProp } from '@react-navigation/native';
-import { LegendList } from '@legendapp/list';
+import { LegendList } from '@legendapp/list/react-native';
 import { Message } from '../types/chat';
 import { useChatMessages } from '../hooks/useChatMessages';
 import { MessageBubble } from '../components/MessageBubble';

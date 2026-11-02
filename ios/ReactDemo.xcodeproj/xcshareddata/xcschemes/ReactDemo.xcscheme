@@ -50,13 +50,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "RCT_METRO_PORT"
-            value = "3000"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
@@ -67,6 +60,13 @@
             ReferencedContainer = "container:ReactDemo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "RCT_METRO_PORT"
+            value = "3000"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

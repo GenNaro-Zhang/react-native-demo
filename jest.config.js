@@ -6,9 +6,11 @@ module.exports = {
   ],
   // react-native-mmkv 依赖原生 TurboModule，Jest 中用内存 mock 替代
   // react-native-worklets 使用官方提供的 mock（模块加载期访问原生模块）
+  // NativeWind 的 global.css 在测试环境无需真实样式，映射为空模块
   moduleNameMapper: {
     '^react-native-mmkv$': '<rootDir>/__mocks__/react-native-mmkv.js',
     '^react-native-worklets$': 'react-native-worklets/lib/module/mock.js',
+    '\\.css$': '<rootDir>/__mocks__/style-mock.js',
   },
   // mock 原生 TurboModule 与 Rozenite dispatcher（模块加载期即访问）
   setupFiles: [
